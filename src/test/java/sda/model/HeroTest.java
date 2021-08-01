@@ -11,7 +11,7 @@ class HeroTest {
     void addToInventoryNotExisting() {
         //given
         Hero hero = new Hero("Andrzej", Race.HUMAN);
-        InventoryObject obj1 = new InventoryObject("Apple", 0.1);
+        InventoryObject obj1 = new Food("Apple", 0.1, 1, 10);
 
         //when
         hero.addToInventory(obj1);

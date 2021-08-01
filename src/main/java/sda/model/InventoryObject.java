@@ -2,7 +2,7 @@ package sda.model;
 
 import java.util.Objects;
 
-public class InventoryObject {
+public abstract class InventoryObject {
     private String name;
     private double weight;
     private int count;
