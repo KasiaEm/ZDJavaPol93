@@ -9,4 +9,20 @@ public class Warrior extends Hero {
     public Warrior(String name, Race race) {
         super(name, race);
     }
+
+    public void assignWeapon(int slot) {
+        if (slot >= 0 && slot < super.getInventory().length) {
+            InventoryObject obj = super.getInventory()[slot];
+            if (obj != null && obj instanceof Weapon) {
+                Weapon toReturn = this.weapon;
+                this.weapon = (Weapon) obj;
+
+                if (toReturn != null) {
+                    addToInventory(toReturn);
+                }
+            } else {
+                System.out.println("This is not a weapon.");
+            }
+        }
+    }
 }
