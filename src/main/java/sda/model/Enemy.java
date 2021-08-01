@@ -1,6 +1,6 @@
 package sda.model;
 
-public abstract class Enemy {
+public abstract class Enemy implements ProneToDamage{
     private String name;
     private int health;
     private int damage;
@@ -21,5 +21,15 @@ public abstract class Enemy {
 
     public int getDamage() {
         return damage;
+    }
+
+    @Override
+    public void receiveDamage(int healthPoints) {
+        this.health -= healthPoints;
+        if (this.health > 0) {
+            System.out.println("Your health: " + this.health);
+        } else {
+            System.out.println("You are dead.");
+        }
     }
 }

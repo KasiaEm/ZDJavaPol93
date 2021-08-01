@@ -2,7 +2,7 @@ package sda.model;
 
 import sda.model.enums.Race;
 
-public class Hero {
+public class Hero implements ProneToDamage {
     private String name;
     private Race race;
     private int health;
@@ -72,6 +72,7 @@ public class Hero {
         }
     }
 
+    @Override
     public void receiveDamage(int healthPoints) {
         this.health -= healthPoints;
         if (this.health > 0) {
