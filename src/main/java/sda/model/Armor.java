@@ -1,5 +1,7 @@
 package sda.model;
 
+import sda.model.enums.BodyPart;
+
 public class Armor {
     private ArmorPart head;
     private ArmorPart torso;
@@ -54,5 +56,31 @@ public class Armor {
 
     public void setRightLeg(ArmorPart rightLeg) {
         this.rightLeg = rightLeg;
+    }
+
+    public ArmorPart assignPart(ArmorPart part){
+        ArmorPart toReturn = null;
+
+        if(part.getBodyPart().equals(BodyPart.HEAD)){
+            toReturn = this.head;
+            this.head = part;
+        } else if(part.getBodyPart().equals(BodyPart.TORSO)){
+            toReturn = this.torso;
+            this.torso = part;
+        } else if(part.getBodyPart().equals(BodyPart.LEFT_HAND)){
+            toReturn = this.leftHand;
+            this.leftHand = part;
+        } else if(part.getBodyPart().equals(BodyPart.RIGHT_HAND)){
+            toReturn = this.rightHand;
+            this.rightHand = part;
+        } else if(part.getBodyPart().equals(BodyPart.LEFT_LEG)){
+            toReturn = this.leftLeg;
+            this.leftLeg = part;
+        } else if(part.getBodyPart().equals(BodyPart.RIGHT_LEG)){
+            toReturn = this.rightLeg;
+            this.rightLeg = part;
+        }
+
+        return toReturn;
     }
 }
