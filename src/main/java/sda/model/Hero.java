@@ -6,7 +6,6 @@ public class Hero implements ProneToDamage {
     private String name;
     private Race race;
     private int health;
-    private int maxHealth = 100;
     private InventoryObject inventory[] = new InventoryObject[10];
     private boolean overloaded;
     private double maxWeight = 10.0;
@@ -15,7 +14,7 @@ public class Hero implements ProneToDamage {
     public Hero(String name, Race race) {
         this.name = name;
         this.race = race;
-        this.health = this.maxHealth;
+        this.health = race.getHealth();
         this.damage = 5;
     }
 
@@ -29,10 +28,6 @@ public class Hero implements ProneToDamage {
 
     public int getHealth() {
         return health;
-    }
-
-    public int getMaxHealth() {
-        return maxHealth;
     }
 
     public boolean isOverloaded() {
@@ -96,8 +91,8 @@ public class Hero implements ProneToDamage {
             if (obj != null && obj instanceof Food) {
                 int healthPoints = ((Food) obj).getHealthPointsRegeneration();
                 this.health += healthPoints;
-                if (this.health > this.maxHealth)
-                    this.health = this.maxHealth;
+                if (this.health > this.race.getHealth())
+                    this.health = this.race.getHealth();
                 System.out.println("Your health: " + this.health);
                 if (obj.getCount() == 1) {
                     this.inventory[slot] = null;
