@@ -25,4 +25,19 @@ public class Warrior extends Hero {
             }
         }
     }
+
+    public void assignArmorPart(int slot){
+        if (slot >= 0 && slot < super.getInventory().length) {
+            InventoryObject obj = super.getInventory()[slot];
+            if (obj != null && obj instanceof ArmorPart) {
+                ArmorPart toReturn = this.armor.assignPart((ArmorPart) obj);
+
+                if (toReturn != null) {
+                    addToInventory(toReturn);
+                }
+            } else {
+                System.out.println("This is not an armor part.");
+            }
+        }
+    }
 }
