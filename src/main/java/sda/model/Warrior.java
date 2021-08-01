@@ -10,6 +10,10 @@ public class Warrior extends Hero {
         super(name, race);
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     public void assignWeapon(int slot) {
         if (slot >= 0 && slot < super.getInventory().length) {
             InventoryObject obj = super.getInventory()[slot];

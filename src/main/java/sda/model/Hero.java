@@ -10,11 +10,13 @@ public class Hero implements ProneToDamage {
     private InventoryObject inventory[] = new InventoryObject[10];
     private boolean overloaded;
     private double maxWeight = 10.0;
+    private int damage;
 
     public Hero(String name, Race race) {
         this.name = name;
         this.race = race;
         this.health = this.maxHealth;
+        this.damage = 5;
     }
 
     public String getName() {
@@ -41,6 +43,10 @@ public class Hero implements ProneToDamage {
         return inventory;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
     public void showInventory() {
         for (int i = 0; i < inventory.length; i++) {
             System.out.println("[" + i + "]" + (inventory[i] != null ? inventory[i] : "empty"));
@@ -48,27 +54,29 @@ public class Hero implements ProneToDamage {
     }
 
     public void addToInventory(InventoryObject toAdd) {
-        boolean added = false;
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] != null && inventory[i].equals(toAdd)) {
-                inventory[i].setCount(inventory[i].getCount() + toAdd.getCount());
-                added = true;
-                break;
-            }
-        }
-        if (!added) {
+        if (toAdd != null) {
+            boolean added = false;
             for (int i = 0; i < inventory.length; i++) {
-                if (inventory[i] == null) {
-                    inventory[i] = toAdd;
+                if (inventory[i] != null && inventory[i].equals(toAdd)) {
+                    inventory[i].setCount(inventory[i].getCount() + toAdd.getCount());
                     added = true;
                     break;
                 }
             }
-        }
-        if (added) {
-            countOverload();
-        } else {
-            System.out.println("Inventory full. Object cannot be added.");
+            if (!added) {
+                for (int i = 0; i < inventory.length; i++) {
+                    if (inventory[i] == null) {
+                        inventory[i] = toAdd;
+                        added = true;
+                        break;
+                    }
+                }
+            }
+            if (added) {
+                countOverload();
+            } else {
+                System.out.println("Inventory full. Object cannot be added.");
+            }
         }
     }
 
