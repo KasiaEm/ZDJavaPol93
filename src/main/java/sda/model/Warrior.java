@@ -1,5 +1,6 @@
 package sda.model;
 
+import sda.exceptions.InvalidTypeException;
 import sda.model.enums.Race;
 
 public class Warrior extends Hero {
@@ -14,7 +15,7 @@ public class Warrior extends Hero {
         return weapon;
     }
 
-    public void assignWeapon(int slot) {
+    public void assignWeapon(int slot) throws InvalidTypeException {
         if (slot >= 0 && slot < super.getInventory().length) {
             InventoryObject obj = super.getInventory()[slot];
             if (obj != null && obj instanceof Weapon) {
@@ -25,12 +26,12 @@ public class Warrior extends Hero {
                     addToInventory(toReturn);
                 }
             } else {
-                System.out.println("This is not a weapon.");
+                throw new InvalidTypeException("This is not a weapon.");
             }
         }
     }
 
-    public void assignArmorPart(int slot){
+    public void assignArmorPart(int slot) throws InvalidTypeException {
         if (slot >= 0 && slot < super.getInventory().length) {
             InventoryObject obj = super.getInventory()[slot];
             if (obj != null && obj instanceof ArmorPart) {
@@ -40,7 +41,7 @@ public class Warrior extends Hero {
                     addToInventory(toReturn);
                 }
             } else {
-                System.out.println("This is not an armor part.");
+                throw new InvalidTypeException("This is not an armor part.");
             }
         }
     }

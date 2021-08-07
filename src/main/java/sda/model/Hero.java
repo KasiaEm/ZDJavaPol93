@@ -1,5 +1,6 @@
 package sda.model;
 
+import sda.exceptions.InvalidTypeException;
 import sda.model.enums.Race;
 
 public class Hero implements ProneToDamage {
@@ -85,7 +86,7 @@ public class Hero implements ProneToDamage {
         }
     }
 
-    public void eat(int slot) {
+    public void eat(int slot) throws InvalidTypeException {
         if (slot >= 0 && slot < this.inventory.length) {
             InventoryObject obj = this.inventory[slot];
             if (obj != null && obj instanceof Food) {
@@ -100,7 +101,7 @@ public class Hero implements ProneToDamage {
                     obj.setCount(obj.getCount() - 1);
                 }
             } else {
-                System.out.println("This is not food.");
+                throw new InvalidTypeException("This is not food.");
             }
         }
     }
