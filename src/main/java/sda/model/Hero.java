@@ -1,6 +1,8 @@
 package sda.model;
 
+import sda.exceptions.GameOverException;
 import sda.exceptions.InvalidTypeException;
+import sda.exceptions.NoEmptySlotException;
 import sda.model.enums.Race;
 
 public class Hero implements ProneToDamage {
@@ -49,7 +51,7 @@ public class Hero implements ProneToDamage {
         }
     }
 
-    public void addToInventory(InventoryObject toAdd) {
+    public void addToInventory(InventoryObject toAdd) throws NoEmptySlotException {
         if (toAdd != null) {
             boolean added = false;
             for (int i = 0; i < inventory.length; i++) {
@@ -71,18 +73,18 @@ public class Hero implements ProneToDamage {
             if (added) {
                 countOverload();
             } else {
-                System.out.println("Inventory full. Object cannot be added.");
+                throw new NoEmptySlotException("Inventory full. Object cannot be added.");
             }
         }
     }
 
     @Override
-    public void receiveDamage(int healthPoints) {
+    public void receiveDamage(int healthPoints) throws GameOverException {
         this.health -= healthPoints;
         if (this.health > 0) {
             System.out.println("Your health: " + this.health);
         } else {
-            System.out.println("You are dead.");
+            throw new GameOverException("You are dead.");
         }
     }
 

@@ -1,5 +1,7 @@
 package sda.mode;
 
+import sda.exceptions.GameOverException;
+import sda.exceptions.NoEmptySlotException;
 import sda.model.*;
 
 import java.util.Random;
@@ -13,7 +15,7 @@ public class FightMode {
         this.enemy = enemy;
     }
 
-    public void fight() {
+    public void fight() throws NoEmptySlotException, GameOverException {
         while (hero.getHealth() > 0 && enemy.getHealth() > 0) {
             //enemy attack
             int enemyAttackPoints = 0;
@@ -31,9 +33,6 @@ public class FightMode {
             }
             hero.receiveDamage(enemyAttackPoints);
             System.out.println("Hero's health: " + hero.getHealth());
-            if (hero.getHealth() <= 0) {
-                break;
-            }
 
             //hero attack
             int heroAttackPoints = 0;

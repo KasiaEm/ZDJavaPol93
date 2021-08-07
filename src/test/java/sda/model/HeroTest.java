@@ -1,6 +1,7 @@
 package sda.model;
 
 import org.junit.jupiter.api.Test;
+import sda.exceptions.NoEmptySlotException;
 import sda.model.enums.Race;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class HeroTest {
 
     @Test
-    void addToInventoryNotExisting() {
+    void addToInventoryNotExisting() throws NoEmptySlotException {
         //given
         Hero hero = new Hero("Andrzej", Race.HUMAN);
         InventoryObject obj1 = new Food("Apple", 0.1, 1, 10);

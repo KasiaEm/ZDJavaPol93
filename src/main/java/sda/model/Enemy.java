@@ -26,10 +26,5 @@ public abstract class Enemy implements ProneToDamage{
     @Override
     public void receiveDamage(int healthPoints) {
         this.health -= healthPoints;
-        if (this.health > 0) {
-            System.out.println("Your health: " + this.health);
-        } else {
-            System.out.println("You are dead.");
-        }
     }
 }
