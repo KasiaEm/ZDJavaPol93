@@ -1,6 +1,8 @@
-package sda.model;
+package sda.characters;
 
-public abstract class Enemy implements ProneToDamage{
+import sda.model.ProneToDamage;
+
+public abstract class Enemy implements ProneToDamage {
     private String name;
     private int health;
     private int damage;

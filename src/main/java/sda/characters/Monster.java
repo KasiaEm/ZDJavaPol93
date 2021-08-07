@@ -1,6 +1,6 @@
-package sda.model;
+package sda.characters;
 
-public class Monster extends Enemy{
+public class Monster extends Enemy {
     private String description;
 
     public Monster(String name, int health, int damage, String description) {

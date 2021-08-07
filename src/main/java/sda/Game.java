@@ -1,6 +1,6 @@
 package sda;
 
-import sda.model.Hero;
+import sda.characters.Hero;
 import sda.model.enums.Race;
 
 public class Game {

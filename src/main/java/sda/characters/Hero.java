@@ -1,8 +1,11 @@
-package sda.model;
+package sda.characters;
 
 import sda.exceptions.GameOverException;
 import sda.exceptions.InvalidTypeException;
 import sda.exceptions.NoEmptySlotException;
+import sda.model.Food;
+import sda.model.InventoryObject;
+import sda.model.ProneToDamage;
 import sda.model.enums.Race;
 
 public class Hero implements ProneToDamage {

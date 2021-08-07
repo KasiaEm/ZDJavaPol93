@@ -1,8 +1,8 @@
 package sda.mode;
 
+import sda.characters.*;
 import sda.exceptions.GameOverException;
 import sda.exceptions.NoEmptySlotException;
-import sda.model.*;
 
 import java.util.Random;
 
