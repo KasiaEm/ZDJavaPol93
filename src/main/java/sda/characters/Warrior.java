@@ -1,6 +1,5 @@
 package sda.characters;
 
-import sda.characters.Hero;
 import sda.exceptions.GameOverException;
 import sda.exceptions.InvalidTypeException;
 import sda.exceptions.NoEmptySlotException;
@@ -56,8 +55,7 @@ public class Warrior extends Hero {
     @Override
     public void receiveDamage(int healthPoints) throws GameOverException {
         int sumDamageResistance = armor.countSumDamageResistance();
-        if(sumDamageResistance<healthPoints) {
-            super.receiveDamage(healthPoints-sumDamageResistance);
-        }
+        if (sumDamageResistance < healthPoints)
+            super.receiveDamage(healthPoints - sumDamageResistance);
     }
 }

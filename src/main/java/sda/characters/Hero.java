@@ -48,6 +48,10 @@ public class Hero implements ProneToDamage {
         return damage;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public void showInventory() {
         for (int i = 0; i < inventory.length; i++) {
             System.out.println("[" + i + "]" + (inventory[i] != null ? inventory[i] : "empty"));

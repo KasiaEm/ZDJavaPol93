@@ -1,17 +1,25 @@
 package sda.characters;
 
 import sda.Spell;
+import sda.exceptions.GameOverException;
 import sda.model.enums.Race;
 
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Sorcerer extends Hero {
-    private int damageResistancePoints;
+    private int damageResistance;
     private Set<Spell> spells = new TreeSet<>();
 
-    public Sorcerer(String name, Race race, int damageResistancePoints) {
+    public Sorcerer(String name, Race race, int damageResistance) {
         super(name, race);
-        this.damageResistancePoints = damageResistancePoints;
+        this.damageResistance = damageResistance;
+        setDamage(getDamage() * 2);
+    }
+
+    @Override
+    public void receiveDamage(int healthPoints) throws GameOverException {
+        if (damageResistance < healthPoints)
+            super.receiveDamage(healthPoints - damageResistance);
     }
 }
