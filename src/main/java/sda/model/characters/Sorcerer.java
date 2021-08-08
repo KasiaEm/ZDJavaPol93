@@ -24,9 +24,7 @@ public class Sorcerer extends Hero {
     }
 
     public void showSpells() {
-        for (Spell s : spells) {
-            System.out.println(s);
-        }
+        spells.forEach(System.out::println);
     }
 
     public void addSpell(Spell spell) {
