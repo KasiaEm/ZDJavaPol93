@@ -13,7 +13,9 @@ import sda.model.enums.BodyPart;
 import sda.model.enums.Race;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class HeroRepository {
     private Map<String, Hero> heroes = new HashMap<>();
@@ -50,4 +52,18 @@ public class HeroRepository {
     public Map<String, Hero> getHeroes() {
         return heroes;
     }
+
+    private List<Hero> filterByName(String txt) {
+        return heroes.values().stream()
+                .filter(h -> h.getName().startsWith(txt))
+                .collect(Collectors.toList());
+    }
+
+    private List<Hero> filterByRace(Race race) {
+        return heroes.values().stream()
+                .filter(h -> h.getRace().equals(race))
+                .collect(Collectors.toList());
+    }
+
+    
 }
