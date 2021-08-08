@@ -15,12 +15,10 @@ public class Armor {
     }
 
     public int countSumDamageResistance() {
-        /*return ((head != null) ? head.getDamagePoints() : 0)
-                + ((torso != null) ? torso.getDamagePoints() : 0)
-                + ((leftHand != null) ? leftHand.getDamagePoints() : 0)
-                + ((rightHand != null) ? rightHand.getDamagePoints() : 0)
-                + ((leftLeg != null) ? leftLeg.getDamagePoints() : 0)
-                + ((rightLeg != null) ? rightLeg.getDamagePoints() : 0);*/
-        return 0;
+        int sum = 0;
+        for (BodyPart k : parts.keySet()) {
+            sum += parts.get(k).getDamagePoints();
+        }
+        return sum;
     }
 }
