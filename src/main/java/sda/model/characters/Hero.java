@@ -1,4 +1,4 @@
-package sda.characters;
+package sda.model.characters;
 
 import sda.exceptions.GameOverException;
 import sda.exceptions.InvalidTypeException;

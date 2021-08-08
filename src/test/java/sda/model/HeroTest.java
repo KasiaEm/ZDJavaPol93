@@ -1,7 +1,7 @@
 package sda.model;
 
 import org.junit.jupiter.api.Test;
-import sda.characters.Hero;
+import sda.model.characters.Hero;
 import sda.exceptions.NoEmptySlotException;
 import sda.model.enums.Race;
 

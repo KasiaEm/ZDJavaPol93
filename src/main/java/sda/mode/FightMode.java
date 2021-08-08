@@ -1,6 +1,6 @@
 package sda.mode;
 
-import sda.characters.*;
+import sda.model.characters.*;
 import sda.exceptions.GameOverException;
 import sda.exceptions.NoEmptySlotException;
 
