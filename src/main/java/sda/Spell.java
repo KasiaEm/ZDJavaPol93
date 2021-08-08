@@ -35,4 +35,14 @@ public class Spell implements Comparable{
         }
         return 1;
     }
+
+    @Override
+    public String toString() {
+        return "Spell{" +
+                "name='" + name + '\'' +
+                ", health +" + modHealthPoints +
+                ", damage +" + modDamagePoints +
+                ", damageResistance +" + modDamageResistancePoints +
+                '}';
+    }
 }

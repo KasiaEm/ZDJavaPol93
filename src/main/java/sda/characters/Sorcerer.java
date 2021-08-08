@@ -22,4 +22,14 @@ public class Sorcerer extends Hero {
         if (damageResistance < healthPoints)
             super.receiveDamage(healthPoints - damageResistance);
     }
+
+    public void showSpells() {
+        for (Spell s : spells) {
+            System.out.println(s);
+        }
+    }
+
+    public void addSpell(Spell spell){
+        
+    }
 }
