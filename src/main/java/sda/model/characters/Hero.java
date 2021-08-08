@@ -8,6 +8,8 @@ import sda.model.InventoryObject;
 import sda.model.ProneToDamage;
 import sda.model.enums.Race;
 
+import java.util.stream.Stream;
+
 public class Hero implements ProneToDamage {
     private String name;
     private Race race;
@@ -57,9 +59,8 @@ public class Hero implements ProneToDamage {
     }
 
     public void showInventory() {
-        for (int i = 0; i < inventory.length; i++) {
-            System.out.println("[" + i + "]" + (inventory[i] != null ? inventory[i] : "empty"));
-        }
+        Stream.of(inventory)
+                .forEach(i -> System.out.println(i != null ? i : "empty"));
     }
 
     public void addToInventory(InventoryObject toAdd) throws NoEmptySlotException {
