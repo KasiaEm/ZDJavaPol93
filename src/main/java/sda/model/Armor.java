@@ -9,28 +9,8 @@ public class Armor {
     private Map<BodyPart, ArmorPart> parts = new HashMap<>();
 
     public ArmorPart assignPart(ArmorPart part) {
-        ArmorPart toReturn = null;
-
-        /*if (part.getBodyPart().equals(BodyPart.HEAD)) {
-            toReturn = this.head;
-            this.head = part;
-        } else if (part.getBodyPart().equals(BodyPart.TORSO)) {
-            toReturn = this.torso;
-            this.torso = part;
-        } else if (part.getBodyPart().equals(BodyPart.LEFT_HAND)) {
-            toReturn = this.leftHand;
-            this.leftHand = part;
-        } else if (part.getBodyPart().equals(BodyPart.RIGHT_HAND)) {
-            toReturn = this.rightHand;
-            this.rightHand = part;
-        } else if (part.getBodyPart().equals(BodyPart.LEFT_LEG)) {
-            toReturn = this.leftLeg;
-            this.leftLeg = part;
-        } else if (part.getBodyPart().equals(BodyPart.RIGHT_LEG)) {
-            toReturn = this.rightLeg;
-            this.rightLeg = part;
-        }*/
-
+        ArmorPart toReturn = parts.get(part.getBodyPart());
+        parts.put(part.getBodyPart(), part);
         return toReturn;
     }
 
