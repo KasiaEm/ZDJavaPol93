@@ -121,13 +121,9 @@ public class Hero implements ProneToDamage {
     }
 
     private void countOverload() {
-        double sum = 0.0;
-
-        for (InventoryObject obj : inventory) {
-            if (obj != null) {
-                sum += obj.getCount() * obj.getWeight();
-            }
-        }
-        this.overloaded = sum > maxWeight;
+        this.overloaded = Stream.of(inventory)
+                .map(i -> i.getCount() * i.getWeight())
+                .reduce((double) 0, Double::sum)
+                > maxWeight;
     }
 }
