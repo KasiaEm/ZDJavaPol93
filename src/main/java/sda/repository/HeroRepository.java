@@ -65,5 +65,19 @@ public class HeroRepository {
                 .collect(Collectors.toList());
     }
 
-    
+    private List<Hero> filterByHealth(int minHealth) {
+        return heroes.values().stream()
+                .filter(h -> h.getRace().getHealth() >= minHealth)
+                .collect(Collectors.toList());
+    }
+
+    private List<Hero> filterByWeaponName(String weaponName) {
+        return heroes.values().stream()
+                .filter(h -> h instanceof Warrior)
+                .map(h -> (Warrior) h)
+                .filter(w -> w.getWeapon().getName().equals(weaponName))
+                .collect(Collectors.toList());
+    }
+
+
 }

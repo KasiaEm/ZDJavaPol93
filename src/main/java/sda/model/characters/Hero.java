@@ -8,6 +8,7 @@ import sda.model.InventoryObject;
 import sda.model.ProneToDamage;
 import sda.model.enums.Race;
 
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class Hero implements ProneToDamage {
@@ -122,6 +123,7 @@ public class Hero implements ProneToDamage {
 
     private void countOverload() {
         this.overloaded = Stream.of(inventory)
+                .filter(Objects::nonNull)
                 .map(i -> i.getCount() * i.getWeight())
                 .reduce((double) 0, Double::sum)
                 > maxWeight;
