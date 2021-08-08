@@ -29,7 +29,13 @@ public class Sorcerer extends Hero {
         }
     }
 
-    public void addSpell(Spell spell){
-        
+    public void addSpell(Spell spell) {
+        if (spells.add(spell)) {
+            damageResistance += spell.getModDamageResistancePoints();
+            setDamage(getDamage() + spell.getModDamagePoints());
+            setHealth(getHealth() + spell.getModHealthPoints());
+        } else {
+            System.out.println("You already have this spell.");
+        }
     }
 }

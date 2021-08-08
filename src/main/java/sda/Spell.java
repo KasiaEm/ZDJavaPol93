@@ -15,6 +15,22 @@ public class Spell implements Comparable{
         this.modDamageResistancePoints = modDamageResistancePoints;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getModHealthPoints() {
+        return modHealthPoints;
+    }
+
+    public int getModDamagePoints() {
+        return modDamagePoints;
+    }
+
+    public int getModDamageResistancePoints() {
+        return modDamageResistancePoints;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
