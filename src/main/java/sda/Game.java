@@ -1,6 +1,7 @@
 package sda;
 
 import sda.exceptions.GameOverException;
+import sda.exceptions.InvalidTypeException;
 import sda.exceptions.NoEmptySlotException;
 import sda.mode.FightMode;
 import sda.model.Food;
@@ -42,6 +43,13 @@ public class Game {
                     case "d":
                         move(input);
                         break;
+                    case "inventory":
+                        hero.showInventory();
+                        break;
+                    case "eat":
+                        System.out.println("Choose slot: ");
+                        hero.eat(scanner.nextInt());
+                        break;
                     default:
                         System.out.println("Unknown command.");
                 }
@@ -67,10 +75,11 @@ public class Game {
                 showMap();
             } catch (GameOverException e) {
                 System.out.println("Game over.");
-            } catch (NoEmptySlotException e) {
+            } catch (NoEmptySlotException | InvalidTypeException e) {
                 System.out.println(e.getMessage());
             }
         }
+        System.out.println("Enemies killed: " + kills);
     }
 
     private static void move(String input) {
