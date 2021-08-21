@@ -11,7 +11,7 @@ import sda.model.enums.Race;
 
 public class Warrior extends Hero {
     private Weapon weapon;
-    private Armor armor;
+    private Armor armor = new Armor();
 
     public Warrior(String name, Race race) {
         super(name, race);

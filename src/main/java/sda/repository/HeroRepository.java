@@ -37,7 +37,7 @@ public class HeroRepository {
             warrior.addToInventory(new Weapon("Shotgun", 5, 1, 45));
             warrior.assignWeapon(2);
             warrior.addToInventory(new ArmorPart("Chest Piece", 5, 1, 40, BodyPart.TORSO));
-            warrior.assignArmorPart(2);
+            warrior.assignArmorPart(3);
             heroes.put("DZIKI_HARRY", warrior);
 
             Sorcerer sorcerer = new Sorcerer("Andrzej", Race.DEMON, 50);
