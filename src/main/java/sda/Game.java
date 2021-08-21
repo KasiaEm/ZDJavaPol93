@@ -41,7 +41,9 @@ public class Game {
                 map[i++] = line.toCharArray();
             }
             heroPosition = findPositionOf('H');
+            System.out.println("Hero position: " + heroPosition);
             finishPosition = findPositionOf('F');
+            System.out.println("Finish position: " + finishPosition);
         } catch (IOException | URISyntaxException e) {
             System.out.println("Error loading map: " + e.getMessage());
         }

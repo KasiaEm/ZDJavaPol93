@@ -32,4 +32,12 @@ public class Position {
         Position position = (Position) o;
         return x == position.x && y == position.y;
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
