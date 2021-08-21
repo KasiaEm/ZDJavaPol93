@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Game {
     private static char map[][];
+    private static Position heroPosition;
+    private static Position finishPosition;
 
     public static void main(String[] args) {
         initMap();
@@ -38,9 +40,23 @@ public class Game {
             for (String line : lines) {
                 map[i++] = line.toCharArray();
             }
+            heroPosition = findPositionOf('H');
+            finishPosition = findPositionOf('F');
         } catch (IOException | URISyntaxException e) {
             System.out.println("Error loading map: " + e.getMessage());
         }
 
+    }
+
+    private static Position findPositionOf(char c) {
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == c) {
+                    return new Position(i, j);
+                }
+            }
+        }
+        return null;
     }
 }
