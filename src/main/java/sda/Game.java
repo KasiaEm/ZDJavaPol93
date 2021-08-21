@@ -7,12 +7,24 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class Game {
+    private static char map[][];
 
     public static void main(String[] args) {
-        init();
+        initMap();
+        showMap();
     }
 
-    private static void init() {
+    private static void showMap() {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                System.out.print(map[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    private static void initMap() {
+        map = new char[10][];
         try {
             List<String> lines = Files.readAllLines(
                     Path.of(
@@ -21,9 +33,13 @@ public class Game {
                                     .getResource("map.txt")
                                     .toURI()
                     ));
-            lines.forEach(System.out::println);
+
+            int i = 0;
+            for (String line : lines) {
+                map[i++] = line.toCharArray();
+            }
         } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
+            System.out.println("Error loading map: " + e.getMessage());
         }
 
     }
