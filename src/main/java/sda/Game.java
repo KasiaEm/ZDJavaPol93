@@ -16,6 +16,7 @@ public class Game {
     private static char map[][];
     private static Position heroPosition;
     private static Position finishPosition;
+    private static char under = '_';
     private static Hero hero;
     private static int kills = 0;
     private static Scanner scanner = new Scanner(System.in);
@@ -39,26 +40,34 @@ public class Game {
                 default:
                     System.out.println("Unknown command.");
             }
+            showMap();
         }
     }
 
     private static void move(String input) {
-        Position newPosition = null;
+        Position newPos = null;
         switch (input) {
             case "w":
-                newPosition = new Position(heroPosition.getX() - 1, heroPosition.getY());
+                newPos = new Position(heroPosition.getX() - 1, heroPosition.getY());
                 break;
             case "d":
-                newPosition = new Position(heroPosition.getX(), heroPosition.getY() + 1);
+                newPos = new Position(heroPosition.getX(), heroPosition.getY() + 1);
                 break;
             case "a":
-                newPosition = new Position(heroPosition.getX(), heroPosition.getY() - 1);
+                newPos = new Position(heroPosition.getX(), heroPosition.getY() - 1);
                 break;
             case "s":
-                newPosition = new Position(heroPosition.getX() + 1, heroPosition.getY());
+                newPos = new Position(heroPosition.getX() + 1, heroPosition.getY());
                 break;
         }
-        //TODO
+        if (newPos != null && newPos.getX() >= 0 && newPos.getX() < 10 && newPos.getY() >= 0 && newPos.getY() < 30) {
+            map[heroPosition.getX()][heroPosition.getY()] = under;
+            under = map[newPos.getX()][newPos.getY()];
+            map[newPos.getX()][newPos.getY()] = 'H';
+            heroPosition = newPos;
+        } else {
+            System.out.println("End of map.");
+        }
     }
 
     private static void showMap() {
