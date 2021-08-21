@@ -1,5 +1,6 @@
 package sda;
 
+import sda.exceptions.GameOverException;
 import sda.model.characters.Enemy;
 import sda.model.characters.Hero;
 import sda.model.characters.Monster;
@@ -28,19 +29,33 @@ public class Game {
         showMap();
 
         //---game
-        while (!heroPosition.equals(finishPosition)) {
-            String input = scanner.nextLine();
-            switch (input) {
-                case "w":
-                case "s":
-                case "a":
-                case "d":
-                    move(input);
-                    break;
-                default:
-                    System.out.println("Unknown command.");
+        try {
+            while (!heroPosition.equals(finishPosition)) {
+                String input = scanner.nextLine();
+                switch (input) {
+                    case "w":
+                    case "s":
+                    case "a":
+                    case "d":
+                        move(input);
+                        break;
+                    default:
+                        System.out.println("Unknown command.");
+                }
+
+                switch (under) {
+                    case '~':
+                        hero.receiveDamage(1);
+                        break;
+                    case '.':
+                        hero.receiveDamage(5);
+                        break;
+                }
+
+                showMap();
             }
-            showMap();
+        } catch (GameOverException e) {
+            System.out.println("Game over.");
         }
     }
 
