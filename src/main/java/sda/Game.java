@@ -1,6 +1,5 @@
 package sda;
 
-import sda.model.characters.Bandit;
 import sda.model.characters.Enemy;
 import sda.model.characters.Hero;
 import sda.model.characters.Monster;
@@ -22,9 +21,44 @@ public class Game {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //---init
         initMap();
         showHelp();
         showMap();
+
+        //---game
+        while (!heroPosition.equals(finishPosition)) {
+            String input = scanner.nextLine();
+            switch (input) {
+                case "w":
+                case "s":
+                case "a":
+                case "d":
+                    move(input);
+                    break;
+                default:
+                    System.out.println("Unknown command.");
+            }
+        }
+    }
+
+    private static void move(String input) {
+        Position newPosition = null;
+        switch (input) {
+            case "w":
+                newPosition = new Position(heroPosition.getX() - 1, heroPosition.getY());
+                break;
+            case "d":
+                newPosition = new Position(heroPosition.getX(), heroPosition.getY() + 1);
+                break;
+            case "a":
+                newPosition = new Position(heroPosition.getX(), heroPosition.getY() - 1);
+                break;
+            case "s":
+                newPosition = new Position(heroPosition.getX() + 1, heroPosition.getY());
+                break;
+        }
+        //TODO
     }
 
     private static void showMap() {
@@ -85,7 +119,7 @@ public class Game {
         System.out.println("Use \'eat\' to eat.");
     }
 
-    private static Enemy giveMeDefaultEnemy(){
+    private static Enemy giveMeDefaultEnemy() {
         return new Monster("Bear", 150, 30, "Horryfying bear.");
     }
 }
