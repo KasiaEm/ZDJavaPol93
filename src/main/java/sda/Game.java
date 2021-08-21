@@ -2,6 +2,7 @@ package sda;
 
 import sda.exceptions.GameOverException;
 import sda.exceptions.NoEmptySlotException;
+import sda.mode.FightMode;
 import sda.model.Food;
 import sda.model.characters.Enemy;
 import sda.model.characters.Hero;
@@ -54,6 +55,12 @@ public class Game {
                         break;
                     case '?':
                         hero.addToInventory(new Food("Apple", 0.1, 1, 30));
+                        break;
+                    case 'E':
+                        FightMode fightMode = new FightMode(hero, giveMeDefaultEnemy());
+                        fightMode.fight();
+                        kills++;
+                        under = '_';
                         break;
                 }
 
@@ -151,6 +158,6 @@ public class Game {
     }
 
     private static Enemy giveMeDefaultEnemy() {
-        return new Monster("Bear", 150, 30, "Horryfying bear.");
+        return new Monster("Bear", 150, 40, "Horryfying bear.");
     }
 }
