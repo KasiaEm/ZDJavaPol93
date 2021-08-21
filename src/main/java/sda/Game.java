@@ -1,7 +1,9 @@
 package sda;
 
+import sda.model.characters.Bandit;
+import sda.model.characters.Enemy;
 import sda.model.characters.Hero;
-import sda.model.characters.Warrior;
+import sda.model.characters.Monster;
 import sda.repository.HeroRepository;
 
 import java.io.IOException;
@@ -16,6 +18,7 @@ public class Game {
     private static Position heroPosition;
     private static Position finishPosition;
     private static Hero hero;
+    private static int kills = 0;
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -80,5 +83,9 @@ public class Game {
         System.out.println("Use \'inventory\' to show inventory.");
         System.out.println("Use \'weapon\' to assign weapon.");
         System.out.println("Use \'eat\' to eat.");
+    }
+
+    private static Enemy giveMeDefaultEnemy(){
+        return new Monster("Bear", 150, 30, "Horryfying bear.");
     }
 }
