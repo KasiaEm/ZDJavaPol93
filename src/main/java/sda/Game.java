@@ -1,6 +1,8 @@
 package sda;
 
 import sda.exceptions.GameOverException;
+import sda.exceptions.NoEmptySlotException;
+import sda.model.Food;
 import sda.model.characters.Enemy;
 import sda.model.characters.Hero;
 import sda.model.characters.Monster;
@@ -29,8 +31,8 @@ public class Game {
         showMap();
 
         //---game
-        try {
-            while (!heroPosition.equals(finishPosition)) {
+        while (!heroPosition.equals(finishPosition)) {
+            try {
                 String input = scanner.nextLine();
                 switch (input) {
                     case "w":
@@ -50,12 +52,17 @@ public class Game {
                     case '.':
                         hero.receiveDamage(5);
                         break;
+                    case '?':
+                        hero.addToInventory(new Food("Apple", 0.1, 1, 30));
+                        break;
                 }
 
                 showMap();
+            } catch (GameOverException e) {
+                System.out.println("Game over.");
+            } catch (NoEmptySlotException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (GameOverException e) {
-            System.out.println("Game over.");
         }
     }
 
