@@ -1,14 +1,6 @@
 package sda.game;
 
-import sda.game.exceptions.GameOverException;
-import sda.game.exceptions.InvalidTypeException;
-import sda.game.exceptions.NoEmptySlotException;
-import sda.game.mode.FightMode;
-import sda.game.model.Food;
-import sda.game.model.characters.Enemy;
 import sda.game.model.characters.Hero;
-import sda.game.model.characters.Monster;
-import sda.game.repository.HeroRepository;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -18,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    private static char map[][];
+    /*private static char map[][];
     private static Position heroPosition;
     private static Position finishPosition;
     private static char under = '_';
@@ -168,5 +160,5 @@ public class Game {
 
     private static Enemy giveMeDefaultEnemy() {
         return new Monster("Bear", 150, 40, "Horryfying bear.");
-    }
+    }*/
 }
