@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toCollection;
 
 public class SudokuValidator {
     private List<Set<Integer>> rows;
@@ -25,13 +28,10 @@ public class SudokuValidator {
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                int current = grid[i][j];
+                int c = grid[i][j];
+                int k = 3 * (i / 3) + (j / 3);
 
-                boolean addedToRow = rows.get(i).add(current);
-                boolean addedToColumn = cols.get(j).add(current);
-                boolean addedToSquare = sqrs.get(3 * (i / 3) + (j / 3)).add(current);
-
-                if (!(addedToRow && addedToColumn && addedToSquare)) {
+                if (!(rows.get(i).add(c) && cols.get(j).add(c) && sqrs.get(k).add(c))) {
                     return false;
                 }
             }
@@ -41,11 +41,7 @@ public class SudokuValidator {
     }
 
     private List<Set<Integer>> generateSets() {
-        List<Set<Integer>> list = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            list.add(new HashSet<>());
-        }
-        return list;
+        return Stream.generate(HashSet<Integer>::new).limit(9).collect(toCollection(ArrayList::new));
     }
 
 }
