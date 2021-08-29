@@ -1,4 +1,4 @@
-package sda.model;
+package sda.game.model;
 
 public class Food extends InventoryObject {
     private int healthPointsRegeneration;

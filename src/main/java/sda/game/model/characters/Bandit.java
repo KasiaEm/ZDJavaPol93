@@ -1,6 +1,6 @@
-package sda.model.characters;
+package sda.game.model.characters;
 
-import sda.model.Weapon;
+import sda.game.model.Weapon;
 
 public class Bandit extends Enemy{
     private Weapon weapon;

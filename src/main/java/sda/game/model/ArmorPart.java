@@ -1,6 +1,6 @@
-package sda.model;
+package sda.game.model;
 
-import sda.model.enums.BodyPart;
+import sda.game.model.enums.BodyPart;
 
 public class ArmorPart extends InventoryObject{
     private int damagePoints;

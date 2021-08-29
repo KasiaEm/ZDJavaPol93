@@ -1,12 +1,12 @@
-package sda.model.characters;
+package sda.game.model.characters;
 
-import sda.exceptions.GameOverException;
-import sda.exceptions.InvalidTypeException;
-import sda.exceptions.NoEmptySlotException;
-import sda.model.Food;
-import sda.model.InventoryObject;
-import sda.model.ProneToDamage;
-import sda.model.enums.Race;
+import sda.game.exceptions.GameOverException;
+import sda.game.exceptions.InvalidTypeException;
+import sda.game.exceptions.NoEmptySlotException;
+import sda.game.model.Food;
+import sda.game.model.InventoryObject;
+import sda.game.model.ProneToDamage;
+import sda.game.model.enums.Race;
 
 import java.util.Objects;
 import java.util.stream.Stream;

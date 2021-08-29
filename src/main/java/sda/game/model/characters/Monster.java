@@ -1,4 +1,4 @@
-package sda.model.characters;
+package sda.game.model.characters;
 
 public class Monster extends Enemy {
     private String description;

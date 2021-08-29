@@ -1,9 +1,9 @@
-package sda.model;
+package sda.game.model;
 
 import org.junit.jupiter.api.Test;
-import sda.model.characters.Hero;
-import sda.exceptions.NoEmptySlotException;
-import sda.model.enums.Race;
+import sda.game.model.characters.Hero;
+import sda.game.exceptions.NoEmptySlotException;
+import sda.game.model.enums.Race;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

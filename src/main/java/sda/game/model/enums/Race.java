@@ -1,4 +1,4 @@
-package sda.model.enums;
+package sda.game.model.enums;
 
 public enum Race {
     HUMAN(100),

@@ -1,4 +1,4 @@
-package sda;
+package sda.game;
 
 public class Position {
     private int x;

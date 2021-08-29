@@ -1,16 +1,16 @@
-package sda.repository;
+package sda.game.repository;
 
-import sda.Spell;
-import sda.exceptions.InvalidTypeException;
-import sda.exceptions.NoEmptySlotException;
-import sda.model.ArmorPart;
-import sda.model.Food;
-import sda.model.Weapon;
-import sda.model.characters.Hero;
-import sda.model.characters.Sorcerer;
-import sda.model.characters.Warrior;
-import sda.model.enums.BodyPart;
-import sda.model.enums.Race;
+import sda.game.Spell;
+import sda.game.exceptions.InvalidTypeException;
+import sda.game.exceptions.NoEmptySlotException;
+import sda.game.model.ArmorPart;
+import sda.game.model.Food;
+import sda.game.model.Weapon;
+import sda.game.model.characters.Hero;
+import sda.game.model.characters.Sorcerer;
+import sda.game.model.characters.Warrior;
+import sda.game.model.enums.BodyPart;
+import sda.game.model.enums.Race;
 
 import java.util.HashMap;
 import java.util.List;

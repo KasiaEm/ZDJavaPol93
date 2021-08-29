@@ -1,6 +1,6 @@
-package sda.model;
+package sda.game.model;
 
-import sda.exceptions.GameOverException;
+import sda.game.exceptions.GameOverException;
 
 public interface ProneToDamage {
     void receiveDamage(int healthPoints) throws GameOverException;

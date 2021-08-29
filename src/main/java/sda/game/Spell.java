@@ -1,4 +1,4 @@
-package sda;
+package sda.game;
 
 import java.util.Objects;
 

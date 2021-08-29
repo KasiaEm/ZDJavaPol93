@@ -1,14 +1,14 @@
-package sda;
+package sda.game;
 
-import sda.exceptions.GameOverException;
-import sda.exceptions.InvalidTypeException;
-import sda.exceptions.NoEmptySlotException;
-import sda.mode.FightMode;
-import sda.model.Food;
-import sda.model.characters.Enemy;
-import sda.model.characters.Hero;
-import sda.model.characters.Monster;
-import sda.repository.HeroRepository;
+import sda.game.exceptions.GameOverException;
+import sda.game.exceptions.InvalidTypeException;
+import sda.game.exceptions.NoEmptySlotException;
+import sda.game.mode.FightMode;
+import sda.game.model.Food;
+import sda.game.model.characters.Enemy;
+import sda.game.model.characters.Hero;
+import sda.game.model.characters.Monster;
+import sda.game.repository.HeroRepository;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

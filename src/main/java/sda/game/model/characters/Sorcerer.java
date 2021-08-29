@@ -1,8 +1,8 @@
-package sda.model.characters;
+package sda.game.model.characters;
 
-import sda.Spell;
-import sda.exceptions.GameOverException;
-import sda.model.enums.Race;
+import sda.game.Spell;
+import sda.game.exceptions.GameOverException;
+import sda.game.model.enums.Race;
 
 import java.util.Set;
 import java.util.TreeSet;

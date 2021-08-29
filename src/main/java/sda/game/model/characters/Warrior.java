@@ -1,13 +1,13 @@
-package sda.model.characters;
+package sda.game.model.characters;
 
-import sda.exceptions.GameOverException;
-import sda.exceptions.InvalidTypeException;
-import sda.exceptions.NoEmptySlotException;
-import sda.model.Armor;
-import sda.model.ArmorPart;
-import sda.model.InventoryObject;
-import sda.model.Weapon;
-import sda.model.enums.Race;
+import sda.game.exceptions.GameOverException;
+import sda.game.exceptions.InvalidTypeException;
+import sda.game.exceptions.NoEmptySlotException;
+import sda.game.model.Armor;
+import sda.game.model.ArmorPart;
+import sda.game.model.InventoryObject;
+import sda.game.model.Weapon;
+import sda.game.model.enums.Race;
 
 public class Warrior extends Hero {
     private Weapon weapon;

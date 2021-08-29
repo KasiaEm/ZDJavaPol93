@@ -1,6 +1,6 @@
-package sda.model.characters;
+package sda.game.model.characters;
 
-import sda.model.ProneToDamage;
+import sda.game.model.ProneToDamage;
 
 public abstract class Enemy implements ProneToDamage {
     private String name;

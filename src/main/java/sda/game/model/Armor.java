@@ -1,6 +1,6 @@
-package sda.model;
+package sda.game.model;
 
-import sda.model.enums.BodyPart;
+import sda.game.model.enums.BodyPart;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package sda.model;
+package sda.game.model;
 
 import java.util.Objects;
 
