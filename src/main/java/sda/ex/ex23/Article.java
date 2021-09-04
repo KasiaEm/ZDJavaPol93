@@ -40,4 +40,13 @@ public class Article {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
