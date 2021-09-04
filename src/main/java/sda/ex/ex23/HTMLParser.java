@@ -4,14 +4,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedList;
 import java.util.List;
 
-public class HTMLParser {
+public class HTMLParser{
+
     public static void main(String[] args) {
         parseHTML();
     }
 
-    public static void parseHTML() {
+    public static List<Article> parseHTML() {
         try {
             List<String> lines = Files.readAllLines(
                     Path.of(
@@ -21,7 +23,9 @@ public class HTMLParser {
                                     .toURI()
                     ));
 
+            List<Article> articles = new LinkedList<>();
             boolean isContentInProgress = false;
+            
             for (String line : lines) {
                 if (line.contains("<a") && line.contains("artTitle")) {
                     System.out.println(line.substring(line.indexOf(">") + 1, line.indexOf("</a>")));
@@ -43,7 +47,6 @@ public class HTMLParser {
                         System.out.println(line.trim());
                     }
                 }
-
             }
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
