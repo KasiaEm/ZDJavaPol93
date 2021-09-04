@@ -18,7 +18,7 @@ public class ChatManager {
 
         while (!line.equals("-exit")) {
             Scanner sc = new Scanner(System.in);
-            if (loggedIn != null) System.out.print("[" + loggedIn.getName() + "] ");
+            if (loggedIn != null) System.out.print("[" + loggedIn.getUsername() + "] ");
             line = sc.nextLine();
 
             if (line.equals("-login")) {
