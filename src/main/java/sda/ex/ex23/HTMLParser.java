@@ -11,7 +11,7 @@ public class HTMLParser {
         parseHTML();
     }
 
-    public static void parseHTML(){
+    public static void parseHTML() {
         try {
             List<String> lines = Files.readAllLines(
                     Path.of(
@@ -21,7 +21,30 @@ public class HTMLParser {
                                     .toURI()
                     ));
 
-            
+            boolean isContentInProgress = false;
+            for (String line : lines) {
+                if (line.contains("<a") && line.contains("artTitle")) {
+                    System.out.println(line.substring(line.indexOf(">") + 1, line.indexOf("</a>")));
+                } else if (line.contains("datetime")) {
+                    int beginIndex = line.indexOf("datetime=\"") + 10;
+                    System.out.println(line.substring(beginIndex, beginIndex + 16));
+                } else if (line.contains("<div") && line.contains("artContentShort")) {
+                    if (line.contains("</div>")) {
+                        System.out.println(line.substring(line.indexOf(">") + 1, line.indexOf("</div>")));
+                    } else {
+                        System.out.println(line.substring(line.indexOf(">") + 1));
+                        isContentInProgress = true;
+                    }
+                } else if (isContentInProgress) {
+                    if (line.contains("</div>")) {
+                        System.out.println(line.trim().substring(0, line.indexOf("</div>")));
+                        isContentInProgress = false;
+                    } else {
+                        System.out.println(line.trim());
+                    }
+                }
+
+            }
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
