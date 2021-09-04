@@ -20,4 +20,15 @@ public class Database {
             users.add(newUser);
         }
     }
+
+    public User login(User toLogin) throws DBException {
+        String hash = DigestUtils.md5Hex(toLogin.getPassword());
+        toLogin.setPassword(hash);
+        User dbUser = users.stream()
+                .filter(u -> u.equals(toLogin))
+                .findAny()
+                .orElseThrow(() -> new DBException("Invalid username or password!"));
+        loggedIn = toLogin.getUsername();
+        return dbUser;
+    }
 }
