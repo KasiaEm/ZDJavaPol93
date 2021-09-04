@@ -18,7 +18,7 @@ public class HTMLParser {
     private static Pattern pContent = Pattern.compile("<div.*artContentShort.*>(.*)</div>");
 
     public static void main(String[] args) {
-        final List<Article> articles = parseHTML();
+        final List<Article> articles = parseHTMLSimple();
         articles.forEach(System.out::println);
     }
 
@@ -82,7 +82,7 @@ public class HTMLParser {
                     Path.of(
                             HTMLParser.class
                                     .getClassLoader()
-                                    .getResource("News.html")
+                                    .getResource("News2.html")
                                     .toURI()
                     ));
 
@@ -90,18 +90,15 @@ public class HTMLParser {
 
             for (String line : lines) {
                 Matcher mTitle = pTitle.matcher(line);
+                Matcher mDate = pDate.matcher(line);
+                Matcher mContent = pContent.matcher(line);
 
-
-                if (line.contains("<a") && line.contains("artTitle")) {
-                    String title = line.substring(line.indexOf(">") + 1, line.indexOf("</a>"));
-                    a.setTitle(title);
-                } else if (line.contains("datetime")) {
-                    int beginIndex = line.indexOf("datetime=\"") + 10;
-                    String dateStr = line.substring(beginIndex, beginIndex + 16);
-                    a.setDate(LocalDateTime.parse(dateStr, DTF));
-                } else if (line.contains("<div") && line.contains("artContentShort")) {
-                    String contentWhole = line.substring(line.indexOf(">") + 1, line.indexOf("</div>"));
-                    a.setContent(contentWhole);
+                if (mTitle.find()) {
+                    a.setTitle(mTitle.group(1));
+                } else if (mDate.find()) {
+                    a.setDate(LocalDateTime.parse(mDate.group(1), DTF));
+                } else if (mContent.find()) {
+                    a.setContent(mContent.group(1));
                     articles.add(a);
                     a = new Article();
                 }
