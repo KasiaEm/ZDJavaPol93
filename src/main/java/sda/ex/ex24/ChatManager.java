@@ -62,7 +62,7 @@ public class ChatManager {
                 selectedChat = null;
             } else {
                 if (selectedChat != null) {
-                    selectedChat.updateChatHistory("[" + loggedIn.getName() + "] " + line);
+                    selectedChat.updateChatHistory("[" + loggedIn.getUsername() + "] " + line);
                     selectedChat.notifyAllUsers();
                     loggedIn.getMessagesFromChats().put(selectedChat, 0);
                 }
