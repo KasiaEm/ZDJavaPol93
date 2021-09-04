@@ -8,9 +8,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HTMLParser {
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static Pattern pTitle = Pattern.compile("<a.*artTitle.*>(.*)</a>");
+    private static Pattern pDate = Pattern.compile("datetime=\"(.*)\"");
+    private static Pattern pContent = Pattern.compile("<div.*artContentShort.*>(.*)</div>");
 
     public static void main(String[] args) {
         final List<Article> articles = parseHTML();
@@ -84,6 +89,9 @@ public class HTMLParser {
             Article a = new Article();
 
             for (String line : lines) {
+                Matcher mTitle = pTitle.matcher(line);
+
+
                 if (line.contains("<a") && line.contains("artTitle")) {
                     String title = line.substring(line.indexOf(">") + 1, line.indexOf("</a>"));
                     a.setTitle(title);
