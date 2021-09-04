@@ -6,8 +6,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Database {
+    private static Database CONNECTION = new Database();
     private Set<User> users = new HashSet<>();
     private String loggedIn;
+
+    private Database() {
+    }
+
+    public static Database getConnection() {
+        return CONNECTION;
+    }
 
     public void addUser(User newUser) throws DBException {
         boolean found = users.stream()
@@ -30,5 +38,9 @@ public class Database {
                 .orElseThrow(() -> new DBException("Invalid username or password!"));
         loggedIn = toLogin.getUsername();
         return dbUser;
+    }
+
+    public void logout() {
+        loggedIn = null;
     }
 }
