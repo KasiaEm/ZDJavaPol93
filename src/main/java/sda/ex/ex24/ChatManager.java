@@ -22,17 +22,20 @@ public class ChatManager {
             line = sc.nextLine();
 
             if (line.equals("-login")) {
-                System.out.print("[username]");
-                String username = sc.nextLine();
-                System.out.print("[password]");
-                String password = sc.nextLine();
-                try {
-                    loggedIn = database.login(new User(username, password));
-                    System.out.println("[New messages]");
-                    loggedIn.getMessagesFromChats().forEach((k, v) -> System.out.println(k.getChatName() + " [" + v + "]"));
-
-                } catch (DBException e) {
-                    System.out.println(e.getMessage());
+                boolean success = false;
+                while (!success) {
+                    System.out.print("[username]");
+                    String username = sc.nextLine();
+                    System.out.print("[password]");
+                    String password = sc.nextLine();
+                    try {
+                        loggedIn = database.login(new User(username, password));
+                        System.out.println("[New messages]");
+                        loggedIn.getMessagesFromChats().forEach((k, v) -> System.out.println(k.getChatName() + " [" + v + "]"));
+                        success = true;
+                    } catch (DBException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             } else if (line.equals("-chats")) {
                 if (loggedIn == null) {
@@ -46,11 +49,15 @@ public class ChatManager {
                     System.out.println("[Select chat]");
                     for (Chat chat : loggedIn.getMessagesFromChats().keySet()) {
                         chatTable[i] = chat;
-                        System.out.println("[" + (i++) + "] " + chat.getChatName());
+                        System.out.println((i++) + "- " + chat.getChatName());
                     }
                     int nr = -1;
                     while (nr < 0 || nr >= chatsAmount) {
-                        nr = sc.nextInt();
+                        try {
+                            nr = Integer.parseInt(sc.nextLine());
+                        } catch (NumberFormatException e){
+                            System.out.println("Not a number! Try again.");
+                        }
                     }
                     selectedChat = chatTable[nr];
                     loggedIn.getMessagesFromChats().put(selectedChat, 0);
