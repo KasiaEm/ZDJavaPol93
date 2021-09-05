@@ -58,6 +58,9 @@ public class ChatManager {
                         } catch (NumberFormatException e){
                             System.out.println("Not a number! Try again.");
                         }
+                        if(nr < 0 || nr >= chatsAmount){
+                            System.out.println("Please choose a correct number.");
+                        }
                     }
                     selectedChat = chatTable[nr];
                     loggedIn.getMessagesFromChats().put(selectedChat, 0);
