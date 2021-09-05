@@ -23,6 +23,7 @@ public class AddCenteredText implements Operation{
         int stringWidth = fontMetrics.stringWidth(text);
         g.drawString(text, image.getWidth()/2-stringWidth/2, image.getHeight()/2);
         g.dispose();
+        System.out.println("Performing operation: " + this);
     }
 
     @Override
