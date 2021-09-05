@@ -7,7 +7,11 @@ public class Main {
         ImageEditor ie = new ImageEditor();
         ie.loadImage("myImg.jpg");
         //operacje i cofanie
-        ie.perform(new DrawFrame(Color.MAGENTA, 30));
+        ie.perform(new DrawFrame(Color.WHITE, 30));
+        ie.perform(new AddCenteredText(
+                "Hello World!",
+                Color.WHITE,
+                new Font("Calibri Light", Font.ITALIC, 60)));
         //ie.undo();
         ie.saveImage();
     }
